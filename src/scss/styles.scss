@@ -1,5 +1,35 @@
+$primary: #ffb607;
+$secondary:#3b98d3;
+
+$font-family-base: 'Heebo', sans-serif;
+
+$headings-font-family: 'Nunito', sans-serif;
+
+$body-color: #616161;
+
+$headings-font-weight: 700;
+
+$display-font-weight: 800;
+
+$enable-responsive-font-sizes: true;
+
+$border-radius: 4px;
+
+$link-decoration: none;
+
+$enable-negative-margins: true;
+
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
 @import "animate.css/animate";
-@import "owl.carousel/dist/assets/owl.carousel";
-@import "owl.carousel/dist/assets/owl.theme.default";
+ .services{
+    font-size: 80px;
+    display: inline-block;
+    width: 140px;
+    height: 140px;
+    line-height: 140px;
+    margin-bottom: 25px;
+    background-color: #edf5fc;
+    border-radius: 50%;
+    color: #59a3de;
+}
