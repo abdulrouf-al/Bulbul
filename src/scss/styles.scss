@@ -50,5 +50,10 @@ $enable-negative-margins: true;
 
 .padding{
 
-    @extend   .py-2, .py-md-5
+    @extend   .py-3, .py-md-5
 }
+#mobileContactForm{
+    
+    width: 100%;
+    height : 100vh
+  }
