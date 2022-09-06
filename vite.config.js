@@ -1,14 +1,16 @@
-const path = require('path')
 
-export default {
-  root: path.resolve(__dirname, 'src'),
-  resolve: {
-    alias: {
-      '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve( 'index.html'),
+        course: resolve( 'course.html'),
+        register: resolve( 'register.html')
+      }
     }
-  },
-  server: {
-    port: 8080,
-    hot: true
   }
-}
+})
