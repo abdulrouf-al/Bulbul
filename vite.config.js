@@ -8,9 +8,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve( __dirname,'src/index.html'),
-        course: resolve( __dirname,'src/course.html'),
-        register: resolve(__dirname, 'src/register.html')
+        main: resolve( 'src/index.html'),
+        course: resolve( 'src/course.html'),
+        register: resolve( 'src/register.html')
       }
     }
   }
