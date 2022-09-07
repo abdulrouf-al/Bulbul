@@ -16,8 +16,9 @@ export default {
     hot: true
   },
   build :{
-  rollupOptions:{
     outDir:join(__dirname,'dist'),
+  rollupOptions:{
+    
     input: {
       main: resolve( 'src/index.html'),
       course: resolve( 'src/course.html'),
