@@ -148,7 +148,7 @@ function showQuetions(index) {
 
 
 
-
+       ;
         
         const element = document.createElement("div");
         element.setAttribute("class", "option");
@@ -160,6 +160,7 @@ function showQuetions(index) {
             
         })
     }
+   
    
     que_text.innerHTML = questions[index].id + '. ' + questions[index].question; //adding new span tag inside que_tag
     // option_list.innerHTML = option_tag; //adding new div tag inside option_tag
@@ -190,36 +191,53 @@ let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
 //if user clicked on option
 function optionSelected(answer, option    , elOp , index) {
+   
     clearInterval(counter); //clear counter
     clearInterval(counterLine); //clear counterLine
     let userAns = answer.textContent; //getting user selected option
     let correcAns = questions[que_count].answer; //getting correct answer from array
     answer.classList.add("correct");
     const allOptions = option_list.children.length; //getting all option items
+
+
+
+    const allOfThem =  document.querySelector(".allOfThem").lastChild;
+   
+
+
+
+ answer.classList.add("correct"); //adding green color to correct selected option
+
     if (option.correct) { //if user selected option is equal to array's correct answer
         userScore += 1; //upgrading score value with 1
-        answer.classList.add("correct"); //adding green color to correct selected option
-        answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
-        console.log("Correct Answer *** Your correct answers (score) = " + userScore + answer.textContent);
+       
+        elOp.classList.add("correct")
+        elOp.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon 
+       // answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
+        //console.log("Correct Answer *** Your correct answers (score) = " + userScore + answer.textContent);
     } 
     else {
-        answer.classList.add("incorrect"); //adding red color to correct selected option
-        answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
-        console.log("Wrong Answer!!! Your wrong answer is = " + answer.textContent);
+        //answer.classList.add("incorrect"); //adding red color to correct selected option
+        //answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
+       // console.log("Wrong Answer!!! Your wrong answer is = " + answer.textContent);
 
-        console.log(option_list);
-        console.log(questions[index].options);
+        elOp.classList.add("incorrect")
+        elOp.insertAdjacentHTML("beforeend", crossIconTag); //adding tick icon 
+       
 
         
 
         for (let i = 0; i < 5; i++) { //option_list.children[i].textContent == correcAns   //questions[index].question.correct
 
 
-            console.log(questions[index].options[i]);
+       
             if (questions[index].options[i].correct) { //if there is an option which is matched to an array answer
+
+                allOfThem.children[i].setAttribute("class", "option correct"); //adding green color to matched option
+                allOfThem.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
  
-                option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
-                option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
+               // option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
+                //option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
                 console.log("Auto selected correct answer.");
             }
         }
@@ -236,6 +254,8 @@ function optionSelected(answer, option    , elOp , index) {
         
         
     }
+
+    
 
     for (i = 0; i < allOptions; i++) {
         //option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
