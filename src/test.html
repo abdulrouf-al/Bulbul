@@ -1,0 +1,168 @@
+
+<!DOCTYPE html><!-- Created By CodingNepal - www.codingnepalweb.com  -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Quiz App | CodingNepal</title>
+     <!-- FontAweome CDN Link for Icons
+     -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   
+   
+ 
+ 
+</head>
+<body >
+    <header class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0 ">
+        <!-- Navbar Start -->
+
+
+
+
+        <nav class="bd-gutter container-xxl flex-lg-nowrap flex-wrap">
+            <a href="index.html" class="navbar-brand d-flex align-items-center ">
+                <img class="img-fluid" src="img/bulbul/logo.png" alt="logo">
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-grow-1 align-items-center" id="navbarCollapse">
+                <div class="navbar-nav  ms-auto p-4 p-lg-0">
+                    <a href="index.html" class="nav-item nav-link active">Ana Menu</a>
+                    <a href="index.html#Kursumuz" class="nav-item nav-link">Kurslarımız</a>
+                    <a href="index.html#about_us" class="nav-item nav-link">Hakkımızda</a>
+
+                    <div class="">
+                        <ul class="navbar-nav flex-wrap ms-md-auto">
+
+                            <li class="nav-item col-6 col-lg-auto" >
+                                <a class="nav-link py-2 px-0 px-lg-2"
+                                    href="https://api.whatsapp.com/message/43DNFTYGZ2IXA1?autoload=1&app_absent=0"
+                                    target="_blank" rel="noopener">
+                                    <i class=" fa fa-whatsapp "></i>
+                                    <small class="d-lg-none ms-2">whatsapp</small>
+                                </a>
+
+                            </li>
+                            <li class="nav-item col-6 col-lg-auto">
+                                <a class="nav-link py-2 px-0 px-lg-2" href="https://www.facebook.com/bulbul.akademi"
+                                    target="_blank" rel="noopener">
+                                    <i class=" fa fa-facebook  "></i>
+                                    <small class="d-lg-none ms-2">Facebook</small>
+                                </a>
+                            </li>
+                            <li class="nav-item col-6 col-lg-auto">
+                                <a class="nav-link py-2 px-0 px-lg-2" href="https://t.me/Bulbul_Akademi" target="_blank"
+                                    rel="noopener">
+                                    <i class=" fa fa-telegram  "></i>
+                                    <small class="d-lg-none ms-2">Telegram</small>
+                                </a>
+                            </li>
+
+                            <li class="nav-item col-6 col-lg-auto">
+                                <a class="nav-link py-2 px-0 px-lg-2" href="https://twitter.com/bulbulakademi"
+                                    target="_blank" rel="noopener">
+                                    <i class=" fa fa-twitter   "></i> <small class="d-lg-none ms-2">Twitter</small>
+                                </a>
+                            </li>
+
+
+                            <li class="nav-item col-6 col-lg-auto">
+                                <a class="nav-link py-2 px-0 px-lg-2" href="https://www.instagram.com/bulbul.akademi/"
+                                    target="_blank" rel="noopener">
+                                    <i class=" bi bi-instagram  "></i>
+                                    <small class="d-lg-none ms-2">Instagram</small>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                   
+                </div>
+            </div>
+
+        </nav>
+    </header>
+    <!-- start Quiz button -->
+    <section class="p-0" style="direction:rtl ;">
+       
+            <div class="start_btn"><button>Start Quiz</button></div>
+
+            <!-- Info Box -->
+            <div class="info_box">
+                <div class="info-title"><span>Some Rules of this Quiz</span></div>
+                <div class="info-list">
+                    <div class="info">1. You will have only <span>15 seconds</span> per each question.</div>
+                    <div class="info">2. Once you select your answer, it can't be undone.</div>
+                    <div class="info">3. You can't select any option once time goes off.</div>
+                    <div class="info">4. You can't exit from the Quiz while you're playing.</div>
+                    <div class="info">5. You'll get points on the basis of your correct answers.</div>
+                </div>
+                <div class="buttons">
+                    <button class="quit">Exit Quiz</button>
+                    <button class="restart">Continue</button>
+                </div>
+            </div>
+
+            <!-- Quiz Box -->
+            <div class="quiz_box">
+                <header>
+                    <div class="title">Awesome Quiz Application</div>
+                    <div class="timer">
+                        <div class="time_left_txt">Time Left</div>
+                        <div class="timer_sec">15</div>
+                    </div>
+                    <div class="time_line"></div>
+                </header>
+                <section>
+                    <div class="que_text">
+                        <!-- Here I've inserted question from JavaScript -->
+                    </div>
+                    <div class="option_list">
+                        <!-- Here I've inserted options from JavaScript -->
+                    </div>
+                    
+                </section>
+                    
+
+                <!-- footer of Quiz Box -->
+                <footer>
+                    <div class="total_que">
+                        <div id="myProgress">
+                            <div id="myBar"></div>
+                          </div>
+                        <!-- Here I've inserted Question Count Number from JavaScript -->
+                    </div>
+                    <button class="next_btn">Next Que</button>
+                </footer>
+            </div>
+
+            <!-- Result Box -->
+            <div class="result_box">
+                <div class="icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="complete_text">You've completed the Quiz!</div>
+                <div class="score_text">
+                    <!-- Here I've inserted Score Result from JavaScript -->
+                </div>
+                <div class="buttons">
+                    <button class="restart">Replay Quiz</button>
+                    <button class="quit">Quit Quiz</button>
+                </div>
+            </div>
+    
+            
+               
+        </section>
+ 
+    <!-- Inside this JavaScript file I've inserted Questions and Options only -->
+   
+     <!-- Inside this JavaScript file I've coded all Quiz Codes -->
+    <script src="js/script.js"></script>
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

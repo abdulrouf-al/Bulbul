@@ -1,0 +1,160 @@
+[
+  {
+    "id": 1,
+    "question": ".........صَدِيقِي عَمَّـار",
+    "options": [
+      {
+        "id": 1,
+        "title": "A. هم",
+        "correct": false
+      },
+      {
+        "id": 2,
+        "title": "B. هذه",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "title": "C. هي",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "title": "D. هذا",
+        "correct": true
+      },
+      {
+        "id": 5,
+        "title": "E. أنتِ",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "اِسمي سامِح، ..........أربعٌ وَعشرونَ سنة.",
+    "options": [
+        {
+        "id": 1,
+        "title": "A. عُمري",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "title": "B. جامِعتي",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "title": "C. بيتي",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "title": "D. مَدرستِي",
+        "correct": false
+      },
+      {
+        "id": 5,
+        "title": "E. جِنسيتي",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "أنا الآنَ في الصَّفِّ الأولِ من المَرحلةِ..............",
+    "options": [
+     
+      {
+        "id": 1,
+        "title": "A. الابتدائية",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "title": "B. بعيدةٌ",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "title": "C. جنسيتُه",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "title":  "D. مَكانُ",
+        "correct": false
+      },
+      {
+        "id": 5,
+        "title": "E. تَتَكوَّنُ",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "مِن فَضْلِكِ أُرِيدُ...............",
+    "options": [
+    
+      {
+        "id": 1,
+        "title": "A. مَتَى الرِّحلةُ؟",
+        "correct": false
+      },
+      {
+        "id": 2,
+        "title": "B. أَراكَ غَداً.",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "title": "C. اجْلِسْ هُنَا.",
+        "correct": false
+      },
+      {
+        "id": 4,
+        "title": "D. القَلمَ والدَّفتر.",
+        "correct": true
+      },
+      {
+        "id": 5,
+        "title": "E. وَصَلتِ الطَّائِرَةُ.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "طَلال ..........، هو يَعمَلُ في ..........وسطَ المدينةِ، ويَبيعُ الدَّواءَ للمَرضى.",
+    "options": [
+          
+      {
+        "id": 1,
+        "title": "A. طَبيب- دُكَّان",
+        "correct": false
+      },
+      {
+        "id": 2,
+        "title": "B. مُستَشفى-طَبيب",
+        "correct": false
+      },
+      {
+        "id": 3,
+        "title": "C. صَيدَلانِي- صَيدَليّة",
+        "correct": true
+      },
+      {
+        "id": 4,
+        "title": "D. خَبَّاز-مَدرَسة",
+        "correct": false
+      },
+      {
+        "id": 5,
+        "title": "E. سائق-حَافِلة",
+        "correct": false
+      }
+    ]
+  }
+]

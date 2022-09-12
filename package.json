@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "netlify-cli": "^11.5.1",
+    "netlify-cli": "^2.37.0",
     "sass": "^1.54.5",
     "vite": "^3.0.9"
   },
