@@ -9,7 +9,6 @@ async function loadNames() {
 }
 loadNames();
 
-
 /* 
 // post into json files
 
@@ -122,20 +121,46 @@ function showQuetions(index) {
 
 
     const que_text = document.querySelector(".que_text");
-    option_list.innerHTML = '<span></span>';
+    
+    //const qu1 = document.querySelector(".qu1");
+    const ans = document.querySelector(".d-none");
+    const elQue=document.createElement("div");
+        elQue.setAttribute("class", "que_text",);
+        elQue.innerText=questions[index].question;
+        ans.append(elQue);
+
+        const oplist=document.createElement("div");
+        oplist.setAttribute("class", "option_list");
+        ans.append(oplist);
+
+
+
+
+    option_list.innerHTML = '<!-- -->';
     for (let i = 0; i < questions[index].options.length; i++) {
+
+        
+
+        const elOp=document.createElement("div");
+        elOp.setAttribute("class", "option");
+        elOp.innerText = questions[index].options[i].title;
+        oplist.append(elOp);
+
+
+
+
+        
         const element = document.createElement("div");
         element.setAttribute("class", "option");
         element.innerText = questions[index].options[i].title;
         option_list.append(element);
        // option_lis1.append(element);
-        console.log(element.innerText);
         element.addEventListener("click", () => {
-            optionSelected(element, questions[index].options[i])
+            optionSelected(element, questions[index].options[i]    , elOp ,index )
             
         })
     }
-
+   
     que_text.innerHTML = questions[index].id + '. ' + questions[index].question; //adding new span tag inside que_tag
     // option_list.innerHTML = option_tag; //adding new div tag inside option_tag
 
@@ -164,34 +189,58 @@ let tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
 let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
 //if user clicked on option
-function optionSelected(answer, option) {
+function optionSelected(answer, option    , elOp , index) {
     clearInterval(counter); //clear counter
     clearInterval(counterLine); //clear counterLine
     let userAns = answer.textContent; //getting user selected option
     let correcAns = questions[que_count].answer; //getting correct answer from array
+    answer.classList.add("correct");
     const allOptions = option_list.children.length; //getting all option items
-    console.log(option)
     if (option.correct) { //if user selected option is equal to array's correct answer
         userScore += 1; //upgrading score value with 1
         answer.classList.add("correct"); //adding green color to correct selected option
         answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
         console.log("Correct Answer *** Your correct answers (score) = " + userScore + answer.textContent);
-    } else {
+    } 
+    else {
         answer.classList.add("incorrect"); //adding red color to correct selected option
         answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
         console.log("Wrong Answer!!! Your wrong answer is = " + answer.textContent);
 
-        for (i = 0; i < allOptions; i++) {
+        console.log(option_list);
+        console.log(questions[index].options);
+
+        
+
+        for (let i = 0; i < 5; i++) { //option_list.children[i].textContent == correcAns   //questions[index].question.correct
+
+
+            console.log(questions[index].options[i]);
+            if (questions[index].options[i].correct) { //if there is an option which is matched to an array answer
+ 
+                option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
+                option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
+                console.log("Auto selected correct answer.");
+            }
+        }
+
+        /*
+         for (i = 0; i < option_list.length; i++) { //option_list.children[i].textContent == correcAns   //questions[index].question.correct
             if (option_list.children[i].textContent == correcAns) { //if there is an option which is matched to an array answer 
                 option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
                 option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
                 console.log("Auto selected correct answer.");
             }
         }
+        */
+        
+        
     }
 
     for (i = 0; i < allOptions; i++) {
-        option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
+        //option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
+        const option = option_list.querySelectorAll(".option");
+        option[i].classList.add("disabled");
     }
     next_btn.classList.add("show"); //show the next button if user selected any option
 }
@@ -261,9 +310,8 @@ function queCounter(index) {
     //let totalQueCounTag = '<span><p>' + index + '</p> of <p>' + questions.length + '</p> Questions</span>';
     let totalQueCounTag = '<span><p>' + index + '</p> of <p>' + questions.length + '</p> Questions</span>' +
     `<div class="progress">
-  <div class="progress-bar progress-bar-striped bg-secondary progress-bar-animated" role="progressbar" aria-label="Example with label" style="width: ${(index-1)*20}%;"   aria-valuemin="0" aria-valuemax="100">${(index-1)*20}%</div>
+  <div class="progress-bar progress-bar-striped bg-secondary progress-bar-animated" role="progressbar" aria-label="Example with label" style="width: ${(index-1)/questions.length*100}%;"   aria-valuemin="0" aria-valuemax="100">${(index-1)/questions.length*100}%</div>
 </div>`;
-console.log(`${index}/${questions.length}*100`)
     bottom_ques_counter.innerHTML = totalQueCounTag;  //adding new span tag inside bottom_ques_counter
 }
 
