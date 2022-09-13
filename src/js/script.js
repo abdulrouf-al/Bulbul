@@ -38,6 +38,8 @@ const time_line = document.querySelector("header .time_line");
 const timeText = document.querySelector(".timer .time_left_txt");
 const timeCount = document.querySelector(".timer .timer_sec");
 
+const resultDiv =  document.querySelector(".resultDiv");
+
 // if startQuiz button clicked
 start_btn.onclick = () => {
     info_box.classList.add("activeInfo"); //show info box
@@ -90,7 +92,10 @@ restart_quiz.onclick = () => {
 
 // if quitQuiz button clicked
 quit_quiz.onclick = () => {
-    window.location.reload(); //reload the current window
+    //window.location.reload(); //reload the current window
+   result_box.classList.remove("activeResult");
+   start_btn.setAttribute("class","d-none");
+   resultDiv.removeAttribute("class","d-none");
 }
 
 const next_btn = document.querySelector("footer .next_btn");
@@ -126,7 +131,7 @@ function showQuetions(index) {
     const ans = document.querySelector(".d-none");
     const elQue=document.createElement("div");
         elQue.setAttribute("class", "que_text",);
-        elQue.innerText=questions[index].question;
+        elQue.innerText=questions[index].id + '. ' +questions[index].question;
         ans.append(elQue);
 
         const oplist=document.createElement("div");
@@ -201,7 +206,7 @@ function optionSelected(answer, option    , elOp , index) {
 
 
 
-    const allOfThem =  document.querySelector(".allOfThem").lastChild;
+    const resultDivOptions =  document.querySelector(".resultDiv").lastChild;
    
 
 
@@ -233,8 +238,8 @@ function optionSelected(answer, option    , elOp , index) {
        
             if (questions[index].options[i].correct) { //if there is an option which is matched to an array answer
 
-                allOfThem.children[i].setAttribute("class", "option correct"); //adding green color to matched option
-                allOfThem.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
+                resultDivOptions.children[i].setAttribute("class", "option correct"); //adding green color to matched option
+                resultDivOptions.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
  
                // option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
                 //option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
