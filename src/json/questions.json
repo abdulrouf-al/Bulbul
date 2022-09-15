@@ -5,18 +5,18 @@
     "options": [
       {
         "id": 1,
-        "title": "A. هم",
-        "correct": false
+        "title": "A. هم"
+         
       },
       {
         "id": 2,
-        "title": "B. هذه",
-        "correct": false
+        "title": "B. هذه"
+         
       },
       {
         "id": 3,
-        "title": "C. هي",
-        "correct": false
+        "title": "C. هي"
+         
       },
       {
         "id": 4,
@@ -25,8 +25,8 @@
       },
       {
         "id": 5,
-        "title": "E. أنتِ",
-        "correct": false
+        "title": "E. أنتِ"
+         
       }
     ]
   },
@@ -41,23 +41,23 @@
       },
       {
         "id": 2,
-        "title": "B. جامِعتي",
-        "correct": false
+        "title": "B. جامِعتي"
+         
       },
       {
         "id": 3,
-        "title": "C. بيتي",
-        "correct": false
+        "title": "C. بيتي"
+         
       },
       {
         "id": 4,
-        "title": "D. مَدرستِي",
-        "correct": false
+        "title": "D. مَدرستِي"
+         
       },
       {
         "id": 5,
-        "title": "E. جِنسيتي",
-        "correct": false
+        "title": "E. جِنسيتي"
+         
       }
     ]
   },
@@ -73,23 +73,23 @@
       },
       {
         "id": 2,
-        "title": "B. بعيدةٌ",
-        "correct": false
+        "title": "B. بعيدةٌ"
+         
       },
       {
         "id": 3,
-        "title": "C. جنسيتُه",
-        "correct": false
+        "title": "C. جنسيتُه"
+         
       },
       {
         "id": 4,
-        "title":  "D. مَكانُ",
-        "correct": false
+        "title":  "D. مَكانُ"
+         
       },
       {
         "id": 5,
-        "title": "E. تَتَكوَّنُ",
-        "correct": false
+        "title": "E. تَتَكوَّنُ"
+        
       }
     ]
   },
@@ -100,18 +100,18 @@
     
       {
         "id": 1,
-        "title": "A. مَتَى الرِّحلةُ؟",
-        "correct": false
+        "title": "A. مَتَى الرِّحلةُ؟"
+         
       },
       {
         "id": 2,
-        "title": "B. أَراكَ غَداً.",
-        "correct": false
+        "title": "B. أَراكَ غَداً."
+         
       },
       {
         "id": 3,
-        "title": "C. اجْلِسْ هُنَا.",
-        "correct": false
+        "title": "C. اجْلِسْ هُنَا."
+         
       },
       {
         "id": 4,
@@ -120,8 +120,8 @@
       },
       {
         "id": 5,
-        "title": "E. وَصَلتِ الطَّائِرَةُ.",
-        "correct": false
+        "title": "E. وَصَلتِ الطَّائِرَةُ."
+         
       }
     ]
   },
@@ -132,13 +132,13 @@
           
       {
         "id": 1,
-        "title": "A. طَبيب- دُكَّان",
-        "correct": false
+        "title": "A. طَبيب- دُكَّان"
+         
       },
       {
         "id": 2,
-        "title": "B. مُستَشفى-طَبيب",
-        "correct": false
+        "title": "B. مُستَشفى-طَبيب"
+         
       },
       {
         "id": 3,
@@ -147,13 +147,13 @@
       },
       {
         "id": 4,
-        "title": "D. خَبَّاز-مَدرَسة",
-        "correct": false
+        "title": "D. خَبَّاز-مَدرَسة"
+         
       },
       {
         "id": 5,
-        "title": "E. سائق-حَافِلة",
-        "correct": false
+        "title": "E. سائق-حَافِلة"
+         
       }
     ]
   }
