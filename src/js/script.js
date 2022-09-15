@@ -104,10 +104,11 @@ function Selected(answerSelected, optionFromJSON) {
     clearInterval(counter); //clear counter
     clearInterval(counterLine); //clear counterLine
     answerSelected.classList.add("bg-secondary");
+    if ( timeForAnswer > 0)
+    answerSelected.classList.add("text-white");
     if (optionFromJSON.correct && timeForAnswer > 0) { //if user selected option is equal to array's correct answer
         userScore++; //upgrading score value with 1                   ******************************************************************
         console.log(userScore);
-        answerSelected.classList.add("text-white");
     }
     for (i = 0; i < optionList.children.length; i++) {
         optionList.children[i].setAttribute("disabled", "");
