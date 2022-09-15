@@ -11,13 +11,6 @@ loadNames();
 
 
 
-
-
-//const time_line = document.getElementById("time_line");
-const timeText = document.querySelector(".timer .time_left_txt");
-//const timeCount = document.querySelector(".timer .timer_sec");
-
-
 const infoCardBtn = document.getElementById("info-card-btn");
 const infoCard = document.getElementById("info-card");
 const startQuiz = document.getElementById("start-quiz");
@@ -65,7 +58,6 @@ startQuiz.onclick = () => {
 }
 function startTimer(time) {
     counter = setInterval(timer, 1000);
-
     function timer() {
         display.textContent = time - 1;
         time--;
@@ -84,8 +76,6 @@ function startTimer(time) {
             nextQuestuinBtn.classList.remove("invisible"); //show the next button if user selected any option
         }
     }
-
-
 }
 function startTimerLine(time) {
     counterLine = setInterval(timer, (15 * 3) - 3);
@@ -96,9 +86,7 @@ function startTimerLine(time) {
     if (time > 549) { //if time value is greater than 549
         clearInterval(counterLine); //clear counterLine
     }
-
 }
-
 function showQuetion(index) {
     const question = questions[index];
     questionTitle.innerText = `${question.id}. ${question.question}`;
@@ -116,11 +104,10 @@ function Selected(answerSelected, optionFromJSON) {
     clearInterval(counter); //clear counter
     clearInterval(counterLine); //clear counterLine
     answerSelected.classList.add("bg-secondary");
-    answerSelected.classList.add("text-white");
-
     if (optionFromJSON.correct && timeForAnswer > 0) { //if user selected option is equal to array's correct answer
-        userScore++; //upgrading score value with 1
+        userScore++; //upgrading score value with 1                   ******************************************************************
         console.log(userScore);
+        answerSelected.classList.add("text-white");
     }
     for (i = 0; i < optionList.children.length; i++) {
         optionList.children[i].setAttribute("disabled", "");
@@ -128,9 +115,7 @@ function Selected(answerSelected, optionFromJSON) {
     }
     nextQuestuinBtn.classList.remove("invisible"); //show the next button if user selected any option
 }
-
 nextQuestuinBtn.onclick = () => {
-
     nextQuestuinBtn.classList.add("invisible");
     clearInterval(counterLine); //clear counterLine
     clearInterval(counter); //clear counterLine
@@ -163,21 +148,17 @@ function showResult() {
     resultDiv.innerText = `your resutl is ${userScore}.`;
     infoCardList.classList.add("d-none");
 } const myBar = document.getElementById("my-bar");
-
 function queCounter(index) {
     //creating a new span tag and passing the question number and total question
     //let totalQueCounTag = '<span><p>' + index + '</p> of <p>' + questions.length + '</p> Questions</span>';
     let questionQounter1 = `${index} / ${questions.length}`;
-
     questionQounterDiv.innerText = questionQounter1;  //adding new span tag inside bottom_ques_counter
-
-    myBar.innerHTML = `<div class="progress-bar progress-bar-striped bg-dark progress-bar-animated" role="progressbar"
+    myBar.innerHTML = `<div class="progress-bar   text-white bg-secondary" role="progressbar"
         aria-label="Example with label" style="width: ${(index-1)/questions.length*100}%;"
-        aria-valuemin="0" aria-valuemax="100">
+        aria-valuemin="0" aria-valuemax="100"> 
         ${(index - 1) / questions.length * 100}%</div>
     `;
-console.log(myBar);
-    }
+     }
 
 
  
