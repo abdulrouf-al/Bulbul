@@ -24,6 +24,7 @@
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
     "font-awesome": "^4.7.0",
-    "glob": "^8.0.3"
+    "glob": "^8.0.3",
+    "nodemailer": "^6.7.8"
   }
 }

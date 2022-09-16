@@ -23,7 +23,8 @@ export default {
     input: {
       main: resolve( 'src/index.html'),
       course: resolve( 'src/course.html'),
-      register: resolve( 'src/register.html')
+      register: resolve( 'src/register.html'),
+      test: resolve( 'src/test.html')
     }
   }
 }
