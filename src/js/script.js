@@ -155,25 +155,21 @@ function startTimer(time) {
         display.textContent = time - 1;
         time--;
         timeForAnswer--;
-        // if (time < 9) {if timer is less than 9
-            // let addZero = timeCount.textContent;
-            // timeCount.textContent = "0" + addZero; //add a 0 before time value
-        //}
+         if (time <= 9) {
+             let addZero = display.textContent;
+             display.textContent = `0${addZero}`; //add a 0 before time value
+        }
         if (time < 0) { //if timer is less than 0
             clearInterval(counter); //clear counter
             clearInterval(counterLine); //clear counterLine
             display.textContent = "Time Off"; //change the time text to time off
             for (i = 0; i < options.children.length; i++) {
                 options.children[i].classList.add("pe-none"); //once user select an option then disabled all options
-
             }
             nextQuestionBtn.classList.remove("invisible"); //show the next button if user selected any option
         }
     }
 }
-
-
-
 
 submitBtn.addEventListener('click', () => {
     const name= userName.value;
@@ -205,8 +201,6 @@ submitBtn.addEventListener('click', () => {
 	
  
  
-
-//7F934029FC2DBE9B55B7A869683B33C25118
 
 
  
