@@ -1,23 +1,58 @@
-// Import our custom CSS
 import '../scss/styles.scss'
-// Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'
     
- 
+ let questions;
+
+// https://api.npoint.io/77653dd0093b2190911c          // bulbul inputs to write the user data
+
+const renderPosts = async (term) => {
+     let uri = 'https://api.npoint.io/c82be28d100ea6e99057' ; 
+     if (term) {
+      uri += `&q=${term}`
+    }
+    const res = await fetch(uri);
+    questions = await res.json();
+    /* let template = '';
+    posts.forEach(post => {
+      template += `
+        <div class="post">
+          <h2>${post.title}</h2>
+          <p><small>${post.likes} likes</small></p>
+          <p>${post.body.slice(0, 200)}...</p>
+          <a href="/details.html?id=${post.id}">Read more</a>
+        </div>} );
+      ` */
+     console.log(questions);
+   }
+  window.addEventListener('DOMContentLoaded',() => renderPosts());
+
+  const resultCard = document.getElementById("result-card");
+  const userName = document.getElementById("user-name");
+  const userNumber = document.getElementById("user-number");
+  const userEmail = document.getElementById("user-email");
+  const submitBtn = document.getElementById("submit-btn");
+
+  const form = document.querySelector('form'); //submitBtn
+
+  const addNewStudent = async (e) => {
 
 
+  const doc = {
+    name: userName.value,
+    phoneNumber: userNumber.value,
+    Email: userEmail.value,
+  }
 
- 
+  await fetch('https://api.npoint.io/77653dd0093b2190911c', {
+    method: 'POST',
+    body: JSON.stringify(doc),
+    headers: { 'Content-Type': 'application/json' }
+  })
 
-let questions;
-
-async function loadNames() {
-    const response = await fetch('../json/questions.json');
-    questions = await response.json();
+  window.location.replace('/')
 }
 
-loadNames();
-
+submitBtn.addEventListener('click', addNewStudent);
 
 const startQuizBtn = document.getElementById("start-quiz-btn");
 const infoCard = document.getElementById("info-card");
@@ -36,11 +71,7 @@ const display = document.getElementById("time-counter");
 const bar = document.getElementById("progressBar");
 
 
-const resultCard = document.getElementById("result-card");
-const userName = document.getElementById("user-name");
-const userNumber = document.getElementById("user-number");
-const userEmail = document.getElementById("user-email");
-const submitBtn = document.getElementById("submit-btn");
+
 
 
 
@@ -80,6 +111,7 @@ function showQuestion(index) {
         options.children[i].classList.remove("bg-secondary");
         const selectedOption = options.children[i];
         const optionJSON = questions[index].options[i];
+        console.log(optionJSON);
         selectedOption.addEventListener("click", () => {
             onOptionSelected(selectedOption, optionJSON)
         })
@@ -93,7 +125,7 @@ function onOptionSelected(answerSelected, optionFromJSON) {
     answerSelected.classList.add("text-white")
     if (optionFromJSON.correct) {
         userScore++;
-        console.log(userScore);
+        console.log(optionFromJSON.correct);
     }
     for (let i = 0; i < options.children.length; i++) {
         options.children[i].classList.add("pe-none");
@@ -154,8 +186,8 @@ function startTimerLine(time) {
         time += 1;
         bar.style.width = time + "px";
     }
-    if (time > 549) { //if time value is greater than 549
-        clearInterval(counterLine); //clear counterLine
+    if (time > 549) { 
+        clearInterval(counterLine); 
     }
 }
 function startTimer(time) {
@@ -168,17 +200,19 @@ function startTimer(time) {
              let addZero = display.textContent;
              display.textContent = `0${addZero}`; //add a 0 before time value
         }
-        if (time < 0) { //if timer is less than 0
-            clearInterval(counter); //clear counter
-            clearInterval(counterLine); //clear counterLine
-            display.textContent = "Time Off"; //change the time text to time off
-            for (i = 0; i < options.children.length; i++) {
-                options.children[i].classList.add("pe-none"); //once user select an option then disabled all options
+        if (time < 0) { 
+            clearInterval(counter); 
+            clearInterval(counterLine); 
+            display.textContent = "Time Off"; 
+            for (let i = 0; i < options.children.length; i++) {
+                options.children[i].classList.add("pe-none");
             }
-            nextQuestionBtn.classList.remove("invisible"); //show the next button if user selected any option
+            nextQuestionBtn.classList.remove("invisible"); 
         }
     }
 }
+options.children[i].classList.add("pe-none"); 
+console.log(options.children.length)
 
 submitBtn.addEventListener('click', () => {
     const name= userName.value;
@@ -208,12 +242,3 @@ submitBtn.addEventListener('click', () => {
 
   
 	
- 
- 
-
-
- 
-
-
-
- 
