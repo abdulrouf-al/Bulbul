@@ -31,29 +31,22 @@ const renderPosts = async (term) => {
   const userNumber = document.getElementById("user-number");
   const userEmail = document.getElementById("user-email");
   const submitBtn = document.getElementById("submit-btn");
-
-  const form = document.querySelector('form'); //submitBtn
-
   const addNewStudent = async (e) => {
-
-
   const doc = {
     name: userName.value,
     phoneNumber: userNumber.value,
     Email: userEmail.value,
+    score:userScore
   }
-
   await fetch('https://api.npoint.io/77653dd0093b2190911c', {
     method: 'POST',
     body: JSON.stringify(doc),
     headers: { 'Content-Type': 'application/json' }
   })
-
-  window.location.replace('/')
+  
+  //window.location.replace('/')
 }
-
 submitBtn.addEventListener('click', addNewStudent);
-
 const startQuizBtn = document.getElementById("start-quiz-btn");
 const infoCard = document.getElementById("info-card");
 const continueBtn = document.getElementById("continue-btn");
@@ -231,14 +224,14 @@ submitBtn.addEventListener('click', () => {
         From : "abd.alrawof.albezra@gmail.com",
         Subject : subject,
         Body : message
-    }).then(
+    })
+    /*
+    .then(
       message => {
         if (message=="OK")alert('sent, please check your spam field')
         else
         alert(message)}
-    );
+      )  */
+    ;
    
 })
-
-  
-	
