@@ -47,8 +47,8 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 -->
 
-  <script type="module" crossorigin src="/assets/main.5df7f24e.js"></script>
-  <link rel="stylesheet" href="/assets/main.be344947.css">
+  <script type="module" crossorigin src="/assets/main.ae467709.js"></script>
+  <link rel="stylesheet" href="/assets/main.b131cba4.css">
 </head>
 
 <body>
@@ -127,15 +127,14 @@
             <div class="container longContainer">
                 <div class="row align-items-center justify-content-md-center">
                     <div class="col-12 col-md-6">
-                        <button class="btn btn-secondary btn-lg text-white centerCenter" id="start-quiz-btn">Start
+                        <button type="button" class="btn btn-secondary btn-lg text-white centerCenter" id="start-quiz-btn">Start
                             Quiz</button>
                         <div class="card d-none" id="info-card">
                             <div class="card-body">
                                 <h3 class="card-title h5 " id="info-card-title">Some Rules of this Quiz</h3>
                                 <ol class="list-group" id="info-card-list">
                                     <li class="info list-group-item border-0">1. You will have only <span
-                                            class="text-secondary ">15
-                                            seconds</span> per each question.
+                                            class="text-secondary ">15 seconds</span> per each question.
                                     </li>
                                     <li class="info list-group-item border-0">2. Once you select your answer, it can't
                                         be
@@ -155,7 +154,7 @@
                                     </li>
                                 </ol>
                                 <div class="d-flex">
-                                    <a type="button" href="test.html#sta"
+                                    <a type="button" href="test.html"
                                         class="btn btn-secondary btn-sm text-white me-3" id="continue-btn">Continue
                                     </a>
                                     <button type="button" class="btn btn-secondary btn-sm text-white"
@@ -215,36 +214,43 @@
                                 <h3 class="card-title h5 " id="result-card-title">Your Quiz result</h3>
                                 <div id="final-result"></div>
                                 <div class="lead mb-3">Enter your personal information to send you your result </div>
-                                <div class="mb-3">
-                                    <input class="form-control mb-2" id="user-name" type="text" placeholder="Your name">
-                                    <input class="form-control mb-2" id="user-number" type="text"
-                                        placeholder="Your phone number">
-                                    <input type="email" class="form-control mb-2" id="user-email"
-                                        placeholder="name@example.com">
-                                </div>
-                                <form method="post">
-                                    <button type="button" class="btn btn-secondary btn-sm text-white me-3"
-                                        id="submit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Send me
-                                        result
-                                    </button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Please check your spam.</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                
-                                                <div class="modal-footer">
-                                                    <a href="index.html" type="button" class="btn btn-secondary">Back home</a>
-                                                </div>
-                                            </div>
+                                <div class="container">
+                                    <form class="needs-validation">
+                                        <div class="mb-3">
+                                            <input required class="form-control mb-2" id="user-name" type="text"
+                                                autocomplete="name" placeholder="Your name">
+                                            <input class="form-control mb-2" id="user-number" autocomplete="mobile"
+                                                type="number" inputmode="numeric" placeholder="Your phone number"
+                                                required>
+
+                                            <input type="email" class="form-control mb-2" autocomplete="email"
+                                                id="user-email" placeholder="name@example.com" required>
                                         </div>
-                                    </div>
-                                </form>
+                                        <button type="submit" class="btn btn-secondary btn-sm text-white me-3"
+                                            id="submit-btn">Send me result
+                                        </button>
+                                    </form>
+                                    <!-- Modal
+
+                                                // data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Please check your spam.</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        
+                                                        <div class="modal-footer">
+                                                            <a href="index.html" type="button" class="btn btn-secondary">Back home</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+                                </div>
                             </div>
                         </div>
 

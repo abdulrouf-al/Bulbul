@@ -79,3 +79,14 @@ $enable-negative-margins: true;
  .longContainer{
     height: 130vh;
  }
+
+
+// hiding the arrows in the end of inputs
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number]{
+    -moz-appearance: textfield;
+}

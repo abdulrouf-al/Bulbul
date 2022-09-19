@@ -1,11 +1,12 @@
 import '../scss/styles.scss'
 import * as bootstrap from 'bootstrap'
-    
+     
  let questions;
+ let students;
 
 // https://api.npoint.io/77653dd0093b2190911c          // bulbul inputs to write the user data
 
-const renderPosts = async (term) => {
+const renderQuestions = async (term) => {
      let uri = 'https://api.npoint.io/c82be28d100ea6e99057' ; 
      if (term) {
       uri += `&q=${term}`
@@ -22,15 +23,27 @@ const renderPosts = async (term) => {
           <a href="/details.html?id=${post.id}">Read more</a>
         </div>} );
       ` */
-     console.log(questions);
    }
-  window.addEventListener('DOMContentLoaded',() => renderPosts());
+   window.addEventListener('DOMContentLoaded',() => renderQuestions());
+   const renderStudents = async (term) => {
+    let uri = 'https://api.npoint.io/77653dd0093b2190911c' ; 
+    if (term) {
+        uri += `&q=${term}`
+      }
+    const res = await fetch(uri);
+    students = await res.json();     
+  }
+  window.addEventListener('DOMContentLoaded',() => renderStudents());
+//   console.log(JSON.parse(students));
+//   console.log(questions[0]);
+
 
   const resultCard = document.getElementById("result-card");
   const userName = document.getElementById("user-name");
   const userNumber = document.getElementById("user-number");
   const userEmail = document.getElementById("user-email");
   const submitBtn = document.getElementById("submit-btn");
+
   const addNewStudent = async (e) => {
   const doc = {
     name: userName.value,
@@ -46,7 +59,6 @@ const renderPosts = async (term) => {
   
   //window.location.replace('/')
 }
-submitBtn.addEventListener('click', addNewStudent);
 const startQuizBtn = document.getElementById("start-quiz-btn");
 const infoCard = document.getElementById("info-card");
 const continueBtn = document.getElementById("continue-btn");
@@ -62,13 +74,6 @@ const infoCardList = document.getElementById("info-card-list");
 const timerDiv = document.getElementById("timer");
 const display = document.getElementById("time-counter");
 const bar = document.getElementById("progressBar");
-
-
-
-
-
-
-
 let questionCount = 0;
 let questionNumber = 1;
 let userScore = 0;
@@ -77,7 +82,6 @@ let counter;
 let counterLine;
 let widthValue = 0;
 let timeForAnswer = timeValue;
-
 startQuizBtn.addEventListener('click', () => {
     infoCard.classList.remove("d-none"); //show info box
     startQuizBtn.classList.add("d-none");
@@ -86,46 +90,46 @@ startQuizBtn.addEventListener('click', () => {
 exitBtn.addEventListener('click', () => {
     infoCard.classList.add("d-none"); //hide info box
 })
-
 continueBtn.addEventListener('click', () => {
     quizCard.classList.remove("d-none");
     infoCard.classList.add("d-none"); 
     showQuestion(0);
-    UpdateProgressBar(1);
+    UpdateProgressBar(0);
     startTimer(timeValue);
     startTimerLine(0); 
 })
-
 function showQuestion(index) {
+    let student=students[index];    
+    // console.log(questions[index]);
+    // console.log(students[index]);
+
     const question = questions[index];
     questionTitle.innerText = `${question.id}. ${question.title}`;
     for (let i = 0; i < question.options.length; i++) {
         options.children[i].innerText = question.options[i].title;
         options.children[i].classList.remove("bg-secondary");
         const selectedOption = options.children[i];
-        const optionJSON = questions[index].options[i];
-        console.log(optionJSON);
+        const optionJSON = questions[index];       
         selectedOption.addEventListener("click", () => {
             onOptionSelected(selectedOption, optionJSON)
-        })
+         })
     }
 }
-
 function onOptionSelected(answerSelected, optionFromJSON) {
+    UpdateProgressBar(questionNumber);
     clearInterval(counter); //clear counter
     clearInterval(counterLine); //clear counterLine
     answerSelected.classList.add("bg-secondary");
     answerSelected.classList.add("text-white")
-    if (optionFromJSON.correct) {
+     if (optionFromJSON.answer==answerSelected.innerText) {
         userScore++;
-        console.log(optionFromJSON.correct);
-    }
+       }
     for (let i = 0; i < options.children.length; i++) {
         options.children[i].classList.add("pe-none");
     }
     nextQuestionBtn.classList.remove("invisible");
+    optionFromJSON="";    
 }
-
 nextQuestionBtn.onclick = () => {
     nextQuestionBtn.classList.add("invisible");
     clearInterval(counterLine); //clear counterLine
@@ -146,15 +150,14 @@ nextQuestionBtn.onclick = () => {
         questionNumber++;
         clearInterval(counter);
         showQuestion(questionCount);
-        UpdateProgressBar(questionNumber);
         startTimer(timeValue);
         clearInterval(counterLine); 
         startTimerLine(widthValue); 
     } else {
+        nextQuestionBtn.innerHTML = `Finish`;
         clearInterval(counter); //clear counter
         clearInterval(counterLine); //clear counterLine
         showResult();
-        continueBtn.classList.add("d-none");
     }
 }
 function showResult() {
@@ -162,17 +165,13 @@ function showResult() {
     resultCard.classList.remove("d-none"); //hide quiz box
     finalResult.innerText = `your result is ${userScore}.`;
  }
-
-
 const myBar = document.getElementById("quiz-progress-bar");
-
 function UpdateProgressBar(index) {
     const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
-
     questionsCountText.innerText = `${index} / ${questions.length}`;
-    myBar.style.width = `${clamp((index - 1) / questions.length * 100, 10, 100)}%`;
-    myBar.innerText = `${(index - 1) / questions.length * 100}%`;
-}
+        myBar.style.width = `${clamp((index) / questions.length * 100, 10, 100)}%`;
+        myBar.innerText = `${(index) / questions.length * 100}%`;
+    }
 function startTimerLine(time) {
     counterLine = setInterval(timer, (15 * 2)+1);
     function timer() {
@@ -204,18 +203,17 @@ function startTimer(time) {
         }
     }
 }
-options.children[i].classList.add("pe-none"); 
-console.log(options.children.length)
-
 submitBtn.addEventListener('click', () => {
+
+    if(userEmail.value!=""&&userName.value!=""&&userNumber.value!=""){
+    submitBtn.addEventListener('click', addNewStudent);
     const name= userName.value;
     const email= userEmail.value;
     const subject= "Arabic test result";
     const message= `hi ${name}.
     Your Arabic test result is ${userScore}`;
-    console.log(email);
-    resultCard.classList.add("d-none");
-    Email.send({
+    console.log(email + " submit email");
+     Email.send({
         Host: "smtp.elasticemail.com",
     Username: "abd.alrawof.albezra@gmail.com",
     Password: "7F934029FC2DBE9B55B7A869683B33C25118",
@@ -223,15 +221,37 @@ submitBtn.addEventListener('click', () => {
         To : email,
         From : "abd.alrawof.albezra@gmail.com",
         Subject : subject,
-        Body : message
-    })
-    /*
-    .then(
+        Body : message.then(
       message => {
         if (message=="OK")alert('sent, please check your spam field')
         else
         alert(message)}
-      )  */
-    ;
+      )  
+    })
+}
+    
+    
+    
    
 })
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+/* (() => {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })() */
+
+
+ 
