@@ -125,7 +125,7 @@
             <div class="container longContainer">
                 <div class="row align-items-center justify-content-md-center">
                     <div class="col-12 col-md-6">
-                        <button type="button" class="btn btn-secondary btn-lg text-white centerCenter" id="start-quiz-btn">Start
+                        <button class="btn btn-secondary btn-lg text-white centerCenter" id="start-quiz-btn">Start
                             Quiz</button>
                         <div class="card d-none" id="info-card">
                             <div class="card-body">
@@ -152,8 +152,7 @@
                                     </li>
                                 </ol>
                                 <div class="d-flex">
-                                    <a type="button" href="test.html"
-                                        class="btn btn-secondary btn-sm text-white me-3" id="continue-btn">Continue
+                                    <a class="btn btn-secondary btn-sm text-white me-3" id="continue-btn">Continue
                                     </a>
                                     <button type="button" class="btn btn-secondary btn-sm text-white"
                                         id="exit-btn">Exit</button>
@@ -213,10 +212,10 @@
                                 <div id="final-result"></div>
                                 <div class="lead mb-3">Enter your personal information to send you your result </div>
                                 <div class="container">
-                                    <form class="needs-validation">
+                                    <form class="needs-validation" id="new-student-form">
                                         <div class="mb-3">
-                                            <input required class="form-control mb-2" id="user-name" type="text"
-                                                autocomplete="name" placeholder="Your name">
+                                            <input class="form-control mb-2" id="user-name" type="text"
+                                                autocomplete="name" placeholder="Your name" required>
                                             <input class="form-control mb-2" id="user-number" autocomplete="mobile"
                                                 type="number" inputmode="numeric" placeholder="Your phone number"
                                                 required>
@@ -224,10 +223,11 @@
                                             <input type="email" class="form-control mb-2" autocomplete="email"
                                                 id="user-email" placeholder="name@example.com" required>
                                         </div>
-                                        <button type="submit" class="btn btn-secondary btn-sm text-white me-3"
-                                            id="submit-btn">Send me result
+                                         
+                                        <button class="btn btn-secondary btn-sm text-white me-3" id="submit-btn">Send
                                         </button>
                                     </form>
+
                                     <!-- Modal
 
                                                 // data-bs-toggle="modal" data-bs-target="#exampleModal"

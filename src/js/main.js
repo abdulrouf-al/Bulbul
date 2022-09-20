@@ -1,15 +1,15 @@
 import '../scss/styles.scss'
 import * as bootstrap from 'bootstrap'
-     
- let questions;
- let students;
+
+let questions;
+let students;
 
 // https://api.npoint.io/77653dd0093b2190911c          // bulbul inputs to write the user data
 
 const renderQuestions = async (term) => {
-     let uri = 'https://api.npoint.io/c82be28d100ea6e99057' ; 
-     if (term) {
-      uri += `&q=${term}`
+    let uri = 'https://api.npoint.io/c82be28d100ea6e99057';
+    if (term) {
+        uri += `&q=${term}`
     }
     const res = await fetch(uri);
     questions = await res.json();
@@ -23,41 +23,37 @@ const renderQuestions = async (term) => {
           <a href="/details.html?id=${post.id}">Read more</a>
         </div>} );
       ` */
-   }
-   window.addEventListener('DOMContentLoaded',() => renderQuestions());
-   const renderStudents = async (term) => {
+}
+window.addEventListener('DOMContentLoaded', () => renderQuestions());
+/*    const renderStudents = async (term) => {
     let uri = 'https://api.npoint.io/77653dd0093b2190911c' ; 
-    if (term) {
-        uri += `&q=${term}`
-      }
     const res = await fetch(uri);
     students = await res.json();     
   }
-  window.addEventListener('DOMContentLoaded',() => renderStudents());
+  window.addEventListener('DOMContentLoaded',() => renderStudents()); */
 //   console.log(JSON.parse(students));
 //   console.log(questions[0]);
 
 
-  const resultCard = document.getElementById("result-card");
-  const userName = document.getElementById("user-name");
-  const userNumber = document.getElementById("user-number");
-  const userEmail = document.getElementById("user-email");
-  const submitBtn = document.getElementById("submit-btn");
+const resultCard = document.getElementById("result-card");
+const userName = document.getElementById("user-name");
+const userNumber = document.getElementById("user-number");
+const userEmail = document.getElementById("user-email");
+ 
+const addNewStudent = async (e) => {
+    const doc = {
+        name: userName.value,
+        phoneNumber: userNumber.value,
+        Email: userEmail.value,
+        score: userScore
+    }
+    await fetch('https://api.npoint.io/77653dd0093b2190911c', {
+        method: 'POST',
+        body: JSON.stringify(doc),
+        headers: { 'Content-Type': 'application/json' }
+    })
 
-  const addNewStudent = async (e) => {
-  const doc = {
-    name: userName.value,
-    phoneNumber: userNumber.value,
-    Email: userEmail.value,
-    score:userScore
-  }
-  await fetch('https://api.npoint.io/77653dd0093b2190911c', {
-    method: 'POST',
-    body: JSON.stringify(doc),
-    headers: { 'Content-Type': 'application/json' }
-  })
-  
-  //window.location.replace('/')
+    //window.location.replace('/')
 }
 const startQuizBtn = document.getElementById("start-quiz-btn");
 const infoCard = document.getElementById("info-card");
@@ -74,6 +70,7 @@ const infoCardList = document.getElementById("info-card-list");
 const timerDiv = document.getElementById("timer");
 const display = document.getElementById("time-counter");
 const bar = document.getElementById("progressBar");
+const newStudentForm = document.getElementById("new-student-form");
 let questionCount = 0;
 let questionNumber = 1;
 let userScore = 0;
@@ -92,14 +89,13 @@ exitBtn.addEventListener('click', () => {
 })
 continueBtn.addEventListener('click', () => {
     quizCard.classList.remove("d-none");
-    infoCard.classList.add("d-none"); 
+    infoCard.classList.add("d-none");
     showQuestion(0);
     UpdateProgressBar(0);
     startTimer(timeValue);
-    startTimerLine(0); 
+    startTimerLine(0);
 })
 function showQuestion(index) {
-    let student=students[index];    
     // console.log(questions[index]);
     // console.log(students[index]);
 
@@ -109,10 +105,10 @@ function showQuestion(index) {
         options.children[i].innerText = question.options[i].title;
         options.children[i].classList.remove("bg-secondary");
         const selectedOption = options.children[i];
-        const optionJSON = questions[index];       
+        const optionJSON = questions[index];
         selectedOption.addEventListener("click", () => {
             onOptionSelected(selectedOption, optionJSON)
-         })
+        })
     }
 }
 function onOptionSelected(answerSelected, optionFromJSON) {
@@ -121,25 +117,25 @@ function onOptionSelected(answerSelected, optionFromJSON) {
     clearInterval(counterLine); //clear counterLine
     answerSelected.classList.add("bg-secondary");
     answerSelected.classList.add("text-white")
-     if (optionFromJSON.answer==answerSelected.innerText) {
+    if (optionFromJSON.answer == answerSelected.innerText) {
         userScore++;
-       }
+    }
     for (let i = 0; i < options.children.length; i++) {
         options.children[i].classList.add("pe-none");
     }
     nextQuestionBtn.classList.remove("invisible");
-    optionFromJSON="";    
+    optionFromJSON = "";
 }
 nextQuestionBtn.onclick = () => {
     nextQuestionBtn.classList.add("invisible");
     clearInterval(counterLine); //clear counterLine
     clearInterval(counter); //clear counterLine
     timeForAnswer = timeValue;
-    if(timeForAnswer==0)
-    for (let i = 0; i < options.children.length; i++) {
-        options.children[i].classList.add("pe-none");
-        nextQuestionBtn.classList.remove("invisible");
-    }
+    if (timeForAnswer == 0)
+        for (let i = 0; i < options.children.length; i++) {
+            options.children[i].classList.add("pe-none");
+            nextQuestionBtn.classList.remove("invisible");
+        }
     for (let i = 0; i < options.children.length; i++) {
         options.children[i].classList.remove("bg-secondary");
         options.children[i].classList.remove("pe-none");
@@ -151,10 +147,10 @@ nextQuestionBtn.onclick = () => {
         clearInterval(counter);
         showQuestion(questionCount);
         startTimer(timeValue);
-        clearInterval(counterLine); 
-        startTimerLine(widthValue); 
+        clearInterval(counterLine);
+        startTimerLine(widthValue);
     } else {
-        nextQuestionBtn.innerHTML = `Finish`;
+        //nextQuestionBtn.innerHTML = `Finish`;
         clearInterval(counter); //clear counter
         clearInterval(counterLine); //clear counterLine
         showResult();
@@ -164,22 +160,22 @@ function showResult() {
     quizCard.classList.add("d-none"); //hide quiz box
     resultCard.classList.remove("d-none"); //hide quiz box
     finalResult.innerText = `your result is ${userScore}.`;
- }
+}
 const myBar = document.getElementById("quiz-progress-bar");
 function UpdateProgressBar(index) {
     const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
     questionsCountText.innerText = `${index} / ${questions.length}`;
-        myBar.style.width = `${clamp((index) / questions.length * 100, 10, 100)}%`;
-        myBar.innerText = `${(index) / questions.length * 100}%`;
-    }
+    myBar.style.width = `${clamp((index) / questions.length * 100, 10, 100)}%`;
+    myBar.innerText = `${(index) / questions.length * 100}%`;
+}
 function startTimerLine(time) {
-    counterLine = setInterval(timer, (15 * 2)+1);
+    counterLine = setInterval(timer, (15 * 2) + 1);
     function timer() {
         time += 1;
         bar.style.width = time + "px";
     }
-    if (time > 549) { 
-        clearInterval(counterLine); 
+    if (time > 549) {
+        clearInterval(counterLine);
     }
 }
 function startTimer(time) {
@@ -188,52 +184,74 @@ function startTimer(time) {
         display.textContent = time - 1;
         time--;
         timeForAnswer--;
-         if (time <= 9) {
-             let addZero = display.textContent;
-             display.textContent = `0${addZero}`; //add a 0 before time value
+        if (time <= 9) {
+            let addZero = display.textContent;
+            display.textContent = `0${addZero}`; //add a 0 before time value
         }
-        if (time < 0) { 
-            clearInterval(counter); 
-            clearInterval(counterLine); 
-            display.textContent = "Time Off"; 
+        if (time < 0) {
+            clearInterval(counter);
+            clearInterval(counterLine);
+            display.textContent = "Time Off";
             for (let i = 0; i < options.children.length; i++) {
                 options.children[i].classList.add("pe-none");
             }
-            nextQuestionBtn.classList.remove("invisible"); 
+            nextQuestionBtn.classList.remove("invisible");
         }
     }
 }
-submitBtn.addEventListener('click', () => {
 
-    if(userEmail.value!=""&&userName.value!=""&&userNumber.value!=""){
-    submitBtn.addEventListener('click', addNewStudent);
-    const name= userName.value;
-    const email= userEmail.value;
-    const subject= "Arabic test result";
-    const message= `hi ${name}.
-    Your Arabic test result is ${userScore}`;
-    console.log(email + " submit email");
-     Email.send({
-        Host: "smtp.elasticemail.com",
-    Username: "abd.alrawof.albezra@gmail.com",
-    Password: "7F934029FC2DBE9B55B7A869683B33C25118",
-       // SecureToken : "c5d87e20-c7aa-49e2-805a-b59081c22630",
-        To : email,
-        From : "abd.alrawof.albezra@gmail.com",
-        Subject : subject,
-        Body : message.then(
+
+
+newStudentForm.addEventListener('submit', (e) => {
+
+    if (userEmail.value != "" && userName.value != "" && userNumber.value != "") {
+        submitBtn.addEventListener('submit', addNewStudent);
+        
+        console.log(email + " submit email");
+        /* Email.send({
+           Host: "smtp.elasticemail.com",
+       Username: "abd.alrawof.albezra@gmail.com",
+       Password: "7F934029FC2DBE9B55B7A869683B33C25118",
+          // SecureToken : "c5d87e20-c7aa-49e2-805a-b59081c22630",
+           To : email,
+           From : "abd.alrawof.albezra@gmail.com",
+           Subject : subject,
+           Body : message  
+       }) */
+    }})
+    const submitBtn = document.getElementById("submit-btn");
+    submitBtn.addEventListener('click', () => {
+         if (userEmail.value != "" && userName.value != "" && userNumber.value != "") {
+            addNewStudent();
+            const name = userName.value;
+            const email = userEmail.value;
+            const subject = "Arabic test result";
+            const message = `hi ${name}.
+        Your Arabic test result is ${userScore}`;
+            Email.send({
+                Host: "smtp.elasticemail.com",
+            Username: "abd.alrawof.albezra@gmail.com",
+            Password: "7F934029FC2DBE9B55B7A869683B33C25118",
+               // SecureToken : "c5d87e20-c7aa-49e2-805a-b59081c22630",
+                To : email,
+                From : "abd.alrawof.albezra@gmail.com",
+                Subject : subject,
+                Body : message  
+            })
+                }window.location="../index.html"   ; 
+     })
+
+    /*
+    .then(
       message => {
         if (message=="OK")alert('sent, please check your spam field')
         else
         alert(message)}
-      )  
-    })
-}
-    
-    
-    
-   
-})
+      )
+      */
+
+
+
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 /* (() => {
     'use strict'
@@ -254,4 +272,3 @@ submitBtn.addEventListener('click', () => {
   })() */
 
 
- 
