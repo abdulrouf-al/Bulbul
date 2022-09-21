@@ -76,9 +76,9 @@ $enable-negative-margins: true;
  
 
 
- .longContainer{
+ /* .longContainer{
     height: 130vh;
- }
+ } */
 
 
 // hiding the arrows in the end of inputs
@@ -89,4 +89,11 @@ input::-webkit-inner-spin-button {
 }
 input[type=number]{
     -moz-appearance: textfield;
+}
+
+
+#quiz-progress-bar{
+    transition-duration: 0.7s;
+    transition: width 2s;
+  
 }

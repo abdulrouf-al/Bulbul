@@ -12,7 +12,7 @@ export default {
       'bootstrap-icons': resolve(__dirname, 'node_modules/bootstrap-icons'),
     }
   },
-  server: {
+  server: { 
     port: 8080,
     hot: true
   },
