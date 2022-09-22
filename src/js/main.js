@@ -238,7 +238,8 @@ newStudentForm.addEventListener('submit', (e) => {
                 Subject : subject,
                 Body : message  
             })
-                }window.location="../index.html"   ; 
+            //window.location="../index.html"     
+           }
      })
 
     /*
